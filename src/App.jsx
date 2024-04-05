@@ -3,6 +3,8 @@ import { useState } from "react";
 import TabButton from "./components/TabButton";
 import CoreConcept from"./components/CoreConcept"
 import Header from "./components/Header/Header"
+import Tabs from "./components/Tabs";
+import Sections from "./components/Sections";
 function App() {
   const [selectedTopic, setSelected] = useState();
   function handleClick(selectedButton){
@@ -31,9 +33,9 @@ function App() {
         ))}
           </ul>
         </section>
-        <section id="examples">
-          <h2>Examples</h2>
-          <menu>
+        <Sections title="Examples" id="examples">
+          <Tabs button={
+          <>
             <TabButton isSelected ={selectedTopic === 'components'}
              onSelect={() => handleClick('components')}
             >
@@ -54,9 +56,11 @@ function App() {
             >
               State
             </TabButton>
-          </menu>
-          {tabContent}
-        </section>
+            </>
+          }>
+            {tabContent}
+            </Tabs>
+        </Sections>
       </main>
     </div>
   );
